@@ -1,6 +1,9 @@
+using server.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -12,12 +15,10 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
-
 /*
 * This minimal API is left in place to show that I know how they work.
 */
-app.MapGet("/info", () =>
+app.MapGet("minapi/info", () =>
 {
     var devName = new Info
     (
@@ -29,9 +30,7 @@ app.MapGet("/info", () =>
 })
 .WithName("info");
 
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
 app.Run();
-
-record Info(string FirstName, string LastName)
-{
-    public string FullName => string.Concat(FirstName, " ", LastName);
-}
