@@ -1,4 +1,5 @@
-tutorial/
+tutorial_dotnet/
+tutorial_vite/
 server/bin/
 server/obj/
 learning_log.md
