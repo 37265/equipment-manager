@@ -88,3 +88,4 @@ to be booked.
     - `Denied` (when an admin has denied the request; by not deleting the request altogether,
     admins can retroactively approve requests.)
     - `Cancelled` (when a user cancels a booking [regardless of whether it was approved])
+    - `Returned` (when the booked unit is returned)
