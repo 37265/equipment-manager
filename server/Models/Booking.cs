@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace server.Models;
 
 public enum BookingStatus
@@ -27,5 +29,6 @@ public class Booking
     public User User { get; set; }
     public Product Product { get; set; }
     public Unit Unit { get; set; }
+    [NotMapped]
     public User ApprovedByUser { get; set; }
 }

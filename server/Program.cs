@@ -1,11 +1,24 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using server.Data;
 using server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<EquipmentBookingContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddScoped<EquipmentBookingContext>();
 
 var app = builder.Build();
 
@@ -14,21 +27,6 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-/*
-* This minimal API is left in place to show that I know how they work.
-*/
-app.MapGet("minapi/info", () =>
-{
-    var devName = new Info
-    (
-        "Frank",
-        "Oud"
-    );
-
-    return devName;
-})
-.WithName("info");
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

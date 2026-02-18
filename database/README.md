@@ -29,7 +29,7 @@ for things like unique constraints.
 - I have recorded foreign keys in the diagram, because this diagram also informs the design of the 
 Model classes in my .NET server.
 
-![diagram](./Equipment%20Booking.drawio.svg)
+![diagram](./Equipment%20Booking.svg)
 
 ## Table Design
 
@@ -61,7 +61,7 @@ manufacturer-assigned serial numbers.
 
 ### Maintenance
 - Records instances where a `Unit` is under maintenance.
-- Requires a `reason` with optional `notes`.
+- Requires a `reason`, and `notes` (to be added when maintenance is completed).
 - The `end` timestamp is nullable, because it is set once maintenance is complete. 
 - Records a creation timestamp to sort maintenance requests chronologically. 
 - Records the `id` of the user(s) who started and closed the maintenance request. 
