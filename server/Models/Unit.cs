@@ -16,4 +16,6 @@ public class Unit
     public BookingStatus Status { get; set; }
 
     public Product Product { get; set; }
+
+    public ICollection<Booking> Bookings { get; set; }
 }

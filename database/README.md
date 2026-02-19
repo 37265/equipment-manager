@@ -7,6 +7,9 @@ This database records data for an internal equipment booking system.
 
 Users request bookings for products like laptops, projectors, whiteboards, and a range of other equipment. 
 
+The SQL Server database needs to run in a Docker container, because my development machine is not
+Windows-based. 
+
 ### Workflow
 Users log in on a web app to browse equipment categories, select a specific product, and then 
 request to book a unit of that product for a specific date range. The availability of a product can 

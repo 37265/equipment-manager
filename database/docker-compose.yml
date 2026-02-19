@@ -1,0 +1,9 @@
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    ports: 
+      - "1433:1433"
+    restart: unless-stopped
+    env_file: "vars.env"
+    volumes:
+      - "./setup.sql:/mssql-docker/linux/preview/examples/mssql-customize/setup.sql"

@@ -24,4 +24,6 @@ public class User
     public DateTime CreatedAt { get; set; }
 
     public ICollection<Booking> Bookings { get; set; }
+    public ICollection<Maintenance> CreatedMaintenances { get; set; }
+    public ICollection<Maintenance> ClosedMaintenances { get; set; }
 }

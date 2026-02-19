@@ -25,5 +25,20 @@ public class EquipmentBookingContext : DbContext
         modelBuilder.Entity<Unit>().ToTable("Unit");
         modelBuilder.Entity<Maintenance>().ToTable("Maintenance");
         modelBuilder.Entity<Booking>().ToTable("Booking");
+        
+        modelBuilder.Entity<User>()
+            .HasMany(e => e.CreatedMaintenances)
+            .WithOne(e => e.CreatedByUser)
+            .OnDelete(DeleteBehavior.NoAction);
+        
+        modelBuilder.Entity<User>()
+            .HasMany(e => e.ClosedMaintenances)
+            .WithOne(e => e.ClosedByUser)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Booking>()
+            .HasOne(e => e.Unit)
+            .WithMany(e => e.Bookings)
+            .OnDelete(DeleteBehavior.ClientNoAction);
     }
 }
