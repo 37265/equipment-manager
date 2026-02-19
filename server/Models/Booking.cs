@@ -29,6 +29,5 @@ public class Booking
     public User User { get; set; }
     public Product Product { get; set; }
     public Unit Unit { get; set; }
-    [NotMapped]
     public User ApprovedByUser { get; set; }
 }
