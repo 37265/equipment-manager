@@ -21,7 +21,7 @@ public class User
     public string LastName { get; set; }
     public Role Role { get; private set; } = Role.User;
     public bool IsActive { get; private set; } = true;
-    // DateTimeOffset is preferable to DateTime, because 
+    // DateTimeOffset is preferable to DateTime, because it is the most flexible between time zones
     public DateTimeOffset CreatedAt { get; private set; }
 
     public ICollection<Booking> Bookings { get; set; }

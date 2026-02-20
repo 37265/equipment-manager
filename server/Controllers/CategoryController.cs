@@ -3,19 +3,19 @@ using Microsoft.EntityFrameworkCore;
 using System.Net.Mime;
 using server.Data;
 using server.Models;
+using server.DTOs;
+using server.Services;
 
 namespace server.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class CategoryController(EquipmentBookingContext context) 
-    : ControllerBase // Remember to inherit!!!
+public class CategoryController(ICategoryService service) : ControllerBase // Remember to inherit!!!
 {
-
     [HttpGet("{id}")]
     public async Task<ActionResult<Category>> Get(int id)
     {
-        var result = await context.Categories.FindAsync(id);
+        var result = await service.Get(id);
 
         if (result == null)
         {
@@ -26,17 +26,9 @@ public class CategoryController(EquipmentBookingContext context)
     }
 
     [HttpPost]
-    public async Task<ActionResult<Category>> Add(Category category)
+    public async Task<ActionResult<Category>> Add(CreateCategoryDto dto)
     {
-        var categoryItem = new Category()
-        {
-            Name = category.Name,
-            Description = category.Description
-        };
-
-        context.Categories.Add(categoryItem);
-
-        await context.SaveChangesAsync();
+        var categoryItem = await service.Add(dto);
 
         return CreatedAtAction(
             nameof(Get),

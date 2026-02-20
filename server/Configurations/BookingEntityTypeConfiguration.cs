@@ -4,7 +4,7 @@ using server.Models;
 
 namespace server.Configurations;
 
-public class BookingEntityTypeConfiguration() : IEntityTypeConfiguration<Booking>
+public class BookingEntityTypeConfiguration() : IEntityTypeConfiguration<Booking> 
 {
     public void Configure(EntityTypeBuilder<Booking> builder)
     {
