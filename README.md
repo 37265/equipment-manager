@@ -6,7 +6,6 @@
 Project board: https://github.com/users/37265/projects/1
 
 Full-stack demo (and learning) project for internship portfolio.<br>
-I will be learning how to work with the technologies first. Once I have, I will start creating branches and issues.<br>
 The app is an internal equipment booking system, and the tech stack is loosely based on what is required for Microsoft's [AZ-204 certificate](https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/?practice-assessment-type=certification).
 ## Tech stack
 - Back end: ASP.NET Core, Entity Framework, SQL Server
