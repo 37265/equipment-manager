@@ -1,0 +1,9 @@
+- Work with transactions (to prevent concurrent booking approvals)
+- ASP.NET Identity for authorization
+
+IN CODE:
+- Composite indices
+- Constraints
+- Delete behaviour
+- Concurrency tokens
+- Enforce that EquipmentUnit is of the same EquipmentType as the EquipmentType column of a Booking
