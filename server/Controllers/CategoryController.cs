@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Net.Mime;
 using server.Data;
 using server.Models;
-using server.DTOs;
+using server.DTOs.Categories;
 using server.Services;
 
 namespace server.Controllers;

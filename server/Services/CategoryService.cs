@@ -1,7 +1,7 @@
 using server.Data;
 using server.Models;
 using Microsoft.AspNetCore.Mvc;
-using server.DTOs;
+using server.DTOs.Categories;
 using Microsoft.EntityFrameworkCore;
 
 namespace server.Services;

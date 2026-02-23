@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using server.DTOs;
+using server.DTOs.Categories;
 using server.Models;
 
 namespace server.Services;
