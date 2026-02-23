@@ -1,6 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using server.DTOs;
+using server.DTOs.Categories;
 
 namespace server.Validators;
 

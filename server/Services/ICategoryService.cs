@@ -6,6 +6,7 @@ namespace server.Services;
 
 public interface ICategoryService
 {
+    public Task<List<Category>> List();
     public Task<Category?> Get(int id);
-    public Task<Category> Add(CreateCategoryDto dto);
+    public Task<Category> Create(CreateCategoryDto dto);
 }

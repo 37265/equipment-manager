@@ -26,9 +26,9 @@ public class CategoryController(ICategoryService service) : ControllerBase // Re
     }
 
     [HttpPost]
-    public async Task<ActionResult<Category>> Add(CreateCategoryDto dto)
+    public async Task<ActionResult<Category>> Create(CreateCategoryDto dto)
     {
-        var categoryItem = await service.Add(dto);
+        var categoryItem = await service.Create(dto);
 
         return CreatedAtAction(
             nameof(Get),
