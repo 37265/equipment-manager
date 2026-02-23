@@ -25,7 +25,6 @@ public class EquipmentBookingContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        new UserEntityTypeConfiguration().Configure(modelBuilder.Entity<User>());
-        new BookingEntityTypeConfiguration().Configure(modelBuilder.Entity<Booking>());
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(EquipmentBookingContext).Assembly);
     }
 }
