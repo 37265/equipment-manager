@@ -25,6 +25,7 @@ public class EquipmentBookingContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Applies configuration from all IEntityTypeConfiguration<TEntity> instances that are defined in provided assembly. (Microsoft docs)
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(EquipmentBookingContext).Assembly);
     }
 }
