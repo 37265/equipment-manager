@@ -14,7 +14,7 @@ public class CreateUserDtoValidator : AbstractValidator<CreateUserDto>
         RuleFor(u => u.Password)
             .NotEmpty().WithMessage("Password cannot be empty.")
             .MinimumLength(8).WithMessage("Password must be at least 8 characters.")
-            .Must(BeValidPassword)
+            .Must(BeStrongPassword)
             .WithMessage("Password must contain at least one uppercase letter and one number.");
         
         RuleFor(u => u.FirstName)
@@ -26,8 +26,6 @@ public class CreateUserDtoValidator : AbstractValidator<CreateUserDto>
             .Matches("^[A-Za-z]+$").WithMessage("Last name can only contain letters.");
     }
 
-    private bool BeValidPassword(string password)
-    {
-        return password.Any(char.IsUpper) && password.Any(char.IsDigit);
-    }
+    private bool BeStrongPassword(string password) =>
+        password.Any(char.IsUpper) && password.Any(char.IsDigit);
 }
