@@ -22,7 +22,7 @@ public class BookingController(EquipmentBookingContext context) : ControllerBase
         return result;
     }
     [HttpPost]
-    public async Task<ActionResult<Booking>> Create(CreateBookingDto dto)
+    public async Task<ActionResult<BookingMinimalDto>> Create(CreateBookingDto dto)
     {
         // FluentValidation runs AFTER model binding occurs
         var bookingItem = new Booking()
@@ -38,11 +38,15 @@ public class BookingController(EquipmentBookingContext context) : ControllerBase
 
         return CreatedAtAction(
             nameof(Get),
-            new
-            {
-                id = bookingItem.ID
-            },
-            bookingItem
+            new { id = bookingItem.ID },
+            new BookingMinimalDto
+            (
+                bookingItem.ID,
+                bookingItem.ScheduledStart,
+                bookingItem.ScheduledEnd,
+                bookingItem.Status.ToString(),
+                bookingItem.ProductID
+            )
         );
     }
 }

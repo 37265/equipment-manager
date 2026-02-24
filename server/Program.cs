@@ -24,6 +24,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<EquipmentBookingContext>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 builder.Services.AddValidatorsFromAssemblyContaining<CreateBookingDtoValidator>()
     .AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
