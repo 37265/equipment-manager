@@ -14,9 +14,11 @@ public class CreateBookingDtoValidator : AbstractValidator<CreateBookingDto>
             .NotNull().WithMessage("Start time not specified.")
             .Must(BeInFuture).WithMessage("Booking cannot start before current time.");
 
-        RuleFor(b => b.ScheduledEnd).NotNull().WithMessage("End time not specified.");
-
-        RuleFor(b => b).Must(HaveValidDateRange).WithMessage("End time must be after start time.");
+        RuleFor(b => b.ScheduledEnd)
+            .Cascade(CascadeMode.Stop)
+            .NotNull().WithMessage("End time not specified.")
+            .Must((b, end) => HaveValidDateRange(b.ScheduledStart, end))
+            .WithMessage("End time must be after start time.");
 
         RuleFor(b => b.UserID).NotNull().WithMessage("User ID not specified.");
 
@@ -25,7 +27,6 @@ public class CreateBookingDtoValidator : AbstractValidator<CreateBookingDto>
 
     private static bool BeInFuture(DateTime? start) => start > DateTime.UtcNow;
 
-    private static bool HaveValidDateRange(CreateBookingDto dto) => 
-        dto.ScheduledStart.HasValue && dto.ScheduledEnd.HasValue && 
-        dto.ScheduledEnd > dto.ScheduledStart;
+    private static bool HaveValidDateRange(DateTime? start, DateTime? end) => 
+        end > start;
 }
