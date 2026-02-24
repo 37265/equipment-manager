@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Net.Mime;
 using server.Data;
 using server.Models;
-using server.DTOs;
+using server.DTOs.Categories;
 using server.Services;
 
 namespace server.Controllers;
@@ -26,9 +26,9 @@ public class CategoryController(ICategoryService service) : ControllerBase // Re
     }
 
     [HttpPost]
-    public async Task<ActionResult<Category>> Add(CreateCategoryDto dto)
+    public async Task<ActionResult<Category>> Create(CreateCategoryDto dto)
     {
-        var categoryItem = await service.Add(dto);
+        var categoryItem = await service.Create(dto);
 
         return CreatedAtAction(
             nameof(Get),

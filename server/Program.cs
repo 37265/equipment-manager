@@ -7,6 +7,9 @@ using Microsoft.Extensions.Hosting;
 using server.Data;
 using server.Models;
 using server.Services;
+using FluentValidation;
+using server.Validators;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,9 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<EquipmentBookingContext>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateBookingDtoValidator>()
+    .AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
 var app = builder.Build();
 
