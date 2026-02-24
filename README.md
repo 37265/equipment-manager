@@ -19,7 +19,10 @@ The app is an internal equipment booking system, and the tech stack is loosely b
 - Front end dashboard
 
 ## Setup instructions
-...
+### Database
+#### Linux
+- The [Compose file](./database/docker-compose.yml) is needed to run SQL Server (as a dev database).
+- To test the database with the CLI, use [this step-by-step](https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-ver17&tabs=ubuntu-install%2Codbc-ubuntu-2404#ubuntu) to set up `sqlcmd`.
 
 ## Deployment
 ...

@@ -2,5 +2,7 @@ tutorial_dotnet/
 tutorial_vite/
 server/bin/
 server/obj/
+server/Migrations/
+server/separated_concerns.md
 .vscode/
 learning_log.md
